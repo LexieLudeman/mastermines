@@ -29,6 +29,27 @@ var maxGuesses;
 var userGuesses;
 var currGuess = [];
 
+//VARIABLES FOR TIMER<-------------------
+var startTime = 0, endTime = 0;
+var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
+
+//TIMING FUNCTIONS<----------------------
+function startTimer() {
+    startTime = new Date();
+};
+
+function endTimer() {
+    endTime = new Date();
+    var timeDiff = endTime - startTime; //in ms
+    // strip the ms
+    timeDiff /= 1000;
+    
+    // get seconds and minutes
+    totalSecondsElapsed = Math.round(timeDiff);
+    minutesElapsed = Math.round(totalSecondsElapsed/60);
+    secondsRemainder = (totalSecondsElapsed % 60);
+}
+
 //Making the start menu for the first round
 startMenu();
 
@@ -135,6 +156,7 @@ function newGuess() {
     else {
         mode = "empty";
         alert("You lose..for now!");
+        endTimer();                     //ENDTIMER() FUNCTION CALLED HERE
         startMenu();
         currentY = canvas.height - 210;
     }
@@ -361,9 +383,10 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            startTimer();         //STARTTIMER() FUNCTION CALLED HERE
         }
 
-        //If easy button is clicked, sets mode and max number of guesses and draws background and guess menu
+        //If hard button is clicked, sets mode and max number of guesses and draws background and guess menu
         else if( intersectsHard(x,y) ) {
             mode = "hard";
             maxGuesses = 8;
@@ -371,6 +394,7 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            startTimer();        //STARTTIMER() CALLED HERE
         }
     }
 
