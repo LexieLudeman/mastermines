@@ -32,7 +32,6 @@ var currGuess = [];
 //Declaring variables to hold the number of correct colors in both right and wrong positions
 var correctPosition;
 var wrongPosition;
-var wrongColor;
 
 //Declaring variables for the solution and the reference array for colors
 var solution = [];
@@ -494,6 +493,34 @@ function randomGenerator(values) {
         solution.push(tempColors[num]);
         tempColors.splice(num,1);
         remainingNumbers--;
+    }
+}
+
+function checkGuess() {
+
+    if (correctPosition(index)) {
+        correctPosition++;
+    }
+
+    else if (wrongPosition(index)) {
+        wrongPosition++;
+    }
+
+    pictureChoice();
+
+}
+
+function correctPosition(index) {
+
+}
+
+function wrongPosition(index) {
+
+}
+
+function pictureChoice() {
+    if (correctPosition==4) {
+        
     }
 }
 
