@@ -393,6 +393,7 @@ function change(event) {
             background();
             guessMenu();
             startTimer();         //STARTTIMER() FUNCTION CALLED HERE
+            makeSolution();
         }
 
         //If hard button is clicked, sets mode and max number of guesses and draws background and guess menu
@@ -404,6 +405,7 @@ function change(event) {
             background();
             guessMenu();
             startTimer();        //STARTTIMER() CALLED HERE
+            makeSolution();
         }
     }
 
@@ -479,7 +481,7 @@ function makeSolution() {
     else {
         randomGenerator(4);
     }
-    alert(solution.join("\n"));
+    alert(solution);
 }
 
 function randomGenerator(values) {
@@ -488,7 +490,7 @@ function randomGenerator(values) {
     var num;
     
     while(remainingNumbers > 0) {
-        num = Math.floor(Math.random() * tempColors.length());
+        num = (Math.floor(Math.random() * tempColors.length));
         solution.push(tempColors[num]);
         tempColors.splice(num,1);
         remainingNumbers--;
