@@ -29,6 +29,15 @@ var maxGuesses;
 var userGuesses;
 var currGuess = [];
 
+//Declaring variables to hold the number of correct colors in both right and wrong positions
+var correctPosition;
+var wrongPosition;
+var wrongColor;
+
+//Declaring variables for the solution and the reference array for colors
+var solution = [];
+var colors = ["red","blue","orange","green","purple","pink"];
+
 //VARIABLES FOR TIMER<-------------------
 var startTime = 0, endTime = 0;
 var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
@@ -461,5 +470,28 @@ function change(event) {
         }
     }
 
+}
+
+function makeSolution() {
+    if (mode=="easy") {
+        randomGenerator(4);
+    }
+    else {
+        randomGenerator(4);
+    }
+    alert(solution.join("\n"));
+}
+
+function randomGenerator(values) {
+    var remainingNumbers = values;
+    var tempColors = colors;
+    var num;
+    
+    while(remainingNumbers > 0) {
+        num = Math.floor(Math.random() * tempColors.length());
+        solution.push(tempColors[num]);
+        tempColors.splice(num,1);
+        remainingNumbers--;
+    }
 }
 
