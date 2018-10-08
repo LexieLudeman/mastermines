@@ -607,6 +607,7 @@ function winLose() {
 }
 
 function makeSolution() {
+    solution.length = 0;
     if (mode=="easy") {
         randomGenerator(4);
     }
