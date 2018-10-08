@@ -87,7 +87,7 @@ function startMenu() {
     ctx.fillStyle = "#8A8B93";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "bold 20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Please Pick A Difficulty",450,550);
@@ -98,7 +98,7 @@ function startMenu() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Easy",387,650);
@@ -109,7 +109,7 @@ function startMenu() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Hard",512,650);
