@@ -5,7 +5,7 @@ var ctx = canvas.getContext("2d");
 //Setting current mode to empty (as opposed to easy or hard)
 var mode = "empty";
 var newGame = "on";
-var winLose = "lose";
+var end = "lose";
 
 //Setting the x/y value for the buttons clicked
 var currentY = canvas.height - 210;
@@ -157,7 +157,7 @@ function newGuess() {
     if(userGuesses < maxGuesses) {
 
         //Check guess/assign picture
-        
+
 
         //Change to if not right variable
         if(1 == 1) {
@@ -216,7 +216,7 @@ function newGuess() {
 
             mode = "empty";
             newGame = "off";
-            winLose = "win";
+            end = "win";
 
             //ENDTIMER() FUNCTION CALLED HERE
             endTimer();
@@ -571,7 +571,7 @@ function winLose() {
     ctx.font = "20px Arial";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    if(winLose == "lose") {
+    if(end == "lose") {
         ctx.fillText("You lose!",450,550);
     }
     else {
