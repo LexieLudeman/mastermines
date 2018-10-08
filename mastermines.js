@@ -45,6 +45,9 @@ var colors = ["red","blue","orange","green","purple","pink"];
 //Declaring variable to hold current picture representing how correct the guess is
 var guessImage = new Image();
 
+//Declaring variable to check whether the guess=solution
+var solved = false;
+
 //VARIABLES FOR TIMER<-------------------
 var startTime = 0, endTime = 0;
 var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
@@ -157,7 +160,7 @@ function newGuess() {
     if(userGuesses < maxGuesses) {
 
         //Check guess/assign picture
-        
+        checkGuess();
 
         //Change to if not right variable
         if(1 == 1) {
@@ -639,7 +642,7 @@ function checkGuess() {
     }
 
     pictureChoice();
-    alert("There are: " + correctPosition + "checks and " + wrongPosition + " wrong position");
+    alert("There are: " + correctPosition + " correct and " + wrongPosition + " wrong position");
 
 }
 
@@ -718,7 +721,8 @@ function pictureChoice() {
     }  
 
     else if (correctPosition==4) {
-        guessImage.src="../images/four/four.png"
+        guessImage.src="../images/four/four.png";
+        solved=true;
     }
 
 }
