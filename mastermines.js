@@ -166,7 +166,7 @@ function newGuess() {
         if(!solved) {
 
             //Prints image of right/wrong next to guess
-            drawResult(imageX, currentY);
+           // drawResult(imageX, currentY);
 
             //Background of menu
             ctx.beginPath();
@@ -630,6 +630,8 @@ function randomGenerator(values) {
 }
 
 function checkGuess() {
+    correctPosition = 0;
+    wrongPosition = 0;
 
     for (var index=0; index<solution.length; index++) {
         if (correctP(index)) {
