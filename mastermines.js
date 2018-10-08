@@ -24,6 +24,7 @@ var purpleX = 625;
 var purpleNotClicked = true;
 var pinkX = 775;
 var pinkNotClicked = true;
+var imageX = 700;
 
 var minutes = 12;
 
@@ -154,6 +155,9 @@ function newGuess() {
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
 
+        //Prints image of right/wrong next to guess
+        drawResult(imageX, currentY);
+
         //Background of menu
         ctx.beginPath();
         ctx.rect(0,canvas.height-100,canvas.width,100);
@@ -193,7 +197,7 @@ function newGuess() {
         ctx.textAlign = "center";
         ctx.fillText(userGuesses,425,40);
 
-        //
+        //Prints guesses used
         ctx.font = "20px Arial";
         ctx.fillStyle = "black";
         ctx.textAlign = "center";
