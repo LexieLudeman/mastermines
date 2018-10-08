@@ -41,6 +41,7 @@ var wrongPosition = 0;
 //Declaring variables for the solution and the reference array for colors
 var solution = [];
 var colors = ["red","blue","orange","green","purple","pink"];
+var tempColors = [];
 
 //Declaring variable to hold current picture representing how correct the guess is
 var guessImage = new Image();
@@ -465,6 +466,7 @@ function change(event) {
 
     //Allows the easy/hard buttons to work if mode has not been picked
     if(mode == "empty" && newGame == "on") {
+        
 
         //If easy button is clicked, sets mode and max number of guesses and draws background and guess menu
         if( intersectsEasy(x,y) ) {
@@ -607,7 +609,7 @@ function winLose() {
 }
 
 function makeSolution() {
-    solution.length = 0;
+    solution = [];
     if (mode=="easy") {
         randomGenerator(4);
     }
@@ -618,8 +620,11 @@ function makeSolution() {
 }
 
 function randomGenerator(values) {
+    
+    var colors = ["red","blue","orange","green","purple","pink"];
     var remainingNumbers = values;
-    var tempColors = colors;
+    tempColors = [];
+    tempColors = colors;
     var num;
     
     while(remainingNumbers > 0) {
