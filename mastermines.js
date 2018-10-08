@@ -693,44 +693,44 @@ function pictureChoice() {
 
     else if (correctPosition==1) {
         if (wrongPosition==0) {
-            guessImage.src="../images/one/one_zero.png";
+            guessImage.src="images/one/one_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/one/one_one.png";
+            guessImage.src="images/one/one_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/one/one_two.png";
+            guessImage.src="images/one/one_two.png";
         }
         else if (wrongPosition==3) {
-            guessImage.src="../images/one/one_three.png";
+            guessImage.src="images/one/one_three.png";
         }
      
     }
 
     else if (correctPosition==2) {
         if (wrongPosition==0) {
-            guessImage.src="../images/two/two_zero.png";
+            guessImage.src="images/two/two_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/two/two_one.png";
+            guessImage.src="images/two/two_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/two/two_two.png";
+            guessImage.src="images/two/two_two.png";
         }
      
     }    
 
     else if (correctPosition==3) {
         if (wrongPosition==0) {
-            guessImage.src="../images/three/three_zero.png";
+            guessImage.src="images/three/three_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/three/three_one.png";
+            guessImage.src="images/three/three_one.png";
         }
     }  
 
     else if (correctPosition==4) {
-        guessImage.src="../images/four/four.png";
+        guessImage.src="images/four/four.png";
         solved=true;
     }
 
