@@ -45,6 +45,7 @@ var tempColors = [];
 
 //Declaring variable to hold current picture representing how correct the guess is
 var guessImage = new Image();
+guessImage.src = "thumbnail.png";
 
 //Declaring variable to check whether the guess=solution
 var solved = false;
