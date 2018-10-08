@@ -35,8 +35,8 @@ var userGuesses;
 var currGuess = [];
 
 //Declaring variables to hold the number of correct colors in both right and wrong positions
-var correctPosition;
-var wrongPosition;
+var correctPosition = 0;
+var wrongPosition = 0;
 
 //Declaring variables for the solution and the reference array for colors
 var solution = [];
@@ -163,7 +163,7 @@ function newGuess() {
         checkGuess();
 
         //Change to if not right variable
-        if(1 == 1) {
+        if(!solved) {
 
             //Prints image of right/wrong next to guess
             drawResult(imageX, currentY);
