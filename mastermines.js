@@ -501,12 +501,14 @@ function randomGenerator(values) {
 
 function checkGuess() {
 
-    if (correctP(index)) {
-        correctPosition++;
-    }
+    for (var index=0; index<solution.length; index++) {
+        if (correctP(index)) {
+            correctPosition++;
+        }
 
-    else if (wrongP(index)) {
-        wrongPosition++;
+        else if (wrongP(index)) {
+            wrongPosition++;
+        }
     }
 
     pictureChoice();
