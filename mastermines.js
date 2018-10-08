@@ -674,19 +674,19 @@ function wrongP(index) {
 function pictureChoice() {
     if (correctPosition==0) {
         if (wrongPosition==0) {
-            guessImage.src="../images/zero/zero_zero.png";
+            guessImage.src="images/zero/zero_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/zero/zero_one.png";
+            guessImage.src="images/zero/zero_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/zero/zero_two.png";
+            guessImage.src="images/zero/zero_two.png";
         }
         else if (wrongPosition==3) {
-            guessImage.src="../images/zero/zero_three.png";
+            guessImage.src="images/zero/zero_three.png";
         }
         else {
-            guessImage.src="../images/zero/zero_four.png";
+            guessImage.src="images/zero/zero_four.png";
         }
 
     }
