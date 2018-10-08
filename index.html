@@ -2,8 +2,10 @@
 <html lang="en-US">
 <head>
     <link rel="stylesheet" type="text/css" href="mastermines.css" />
+    <link rel="stylesheet" href="highscore.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <script> src="jquery-3.2.1.min.js" </script>
     <title>MasterMines Game</title>
 </head>
 
@@ -14,8 +16,28 @@
 
 <section>
 <canvas id="myCanvas" width="900" height="1500"></canvas>
-    <script src="mastermines.js"></script> 
+    <script src="mastermines.js"></script>
+    <script type="text/javascript" src="HighscoreAPI.js"></script>
 </section>
+
+
+<div id="highdiv">
+			<table id="hightable">
+				<tr>
+					<th>User</th>
+					<th>Score</th>
+				</tr>
+
+			</table>
+			<table id="myhightable">
+				<tr>
+					<th colspan="2">Your High Score</th>
+				</tr>
+				<tr id="myhighscore">
+					<td colspan="2">You don't have one yet!</td>
+				</tr>
+			</table>
+x</div>
 
 <footer>
     <p>Made By MasterMines (Krista Dunlap, Lexie Ludeman, Toby Crocker)</p>
