@@ -532,63 +532,63 @@ function wrongP(index) {
 function pictureChoice() {
     if (correctPosition==0) {
         if (wrongPosition==0) {
-            guessImage.src="../images/zero_zero.png";
+            guessImage.src="../images/zero/zero_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/zero_one.png";
+            guessImage.src="../images/zero/zero_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/zero_two.png";
+            guessImage.src="../images/zero/zero_two.png";
         }
         else if (wrongPosition==3) {
-            guessImage.src="../images/zero_three.png";
+            guessImage.src="../images/zero/zero_three.png";
         }
         else {
-            guessImage.src="../images/zero_four.png";
+            guessImage.src="../images/zero/zero_four.png";
         }
 
     }
 
     else if (correctPosition==1) {
         if (wrongPosition==0) {
-            guessImage.src="../images/one_zero.png";
+            guessImage.src="../images/one/one_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/one_one.png";
+            guessImage.src="../images/one/one_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/one_two.png";
+            guessImage.src="../images/one/one_two.png";
         }
         else if (wrongPosition==3) {
-            guessImage.src="../images/one_three.png";
+            guessImage.src="../images/one/one_three.png";
         }
      
     }
 
     else if (correctPosition==2) {
         if (wrongPosition==0) {
-            guessImage.src="../images/two_zero.png";
+            guessImage.src="../images/two/two_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/two_one.png";
+            guessImage.src="../images/two/two_one.png";
         }
         else if (wrongPosition==2) {
-            guessImage.src="../images/two_two.png";
+            guessImage.src="../images/two/two_two.png";
         }
      
     }    
 
     else if (correctPosition==3) {
         if (wrongPosition==0) {
-            guessImage.src="../images/three_zero.png";
+            guessImage.src="../images/three/three_zero.png";
         }
         else if (wrongPosition==1) {
-            guessImage.src="../images/three_one.png";
+            guessImage.src="../images/three/three_one.png";
         }
     }  
 
     else if (correctPosition==4) {
-        guessImage.src="../images/win.png"
+        guessImage.src="../images/four/four.png"
     }
 
 }
