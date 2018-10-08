@@ -167,7 +167,7 @@ function newGuess() {
         if(!solved) {
 
             //Prints image of right/wrong next to guess
-           // drawResult(imageX, currentY);
+            ctx.drawImage(guessImage,x,y);
 
             //Background of menu
             ctx.beginPath();
@@ -734,9 +734,5 @@ function pictureChoice() {
         solved=true;
     }
 
-}
-
-function drawResult(x, y) {
-    ctx.drawImage(guessImage,x,y);
 }
 
