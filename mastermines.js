@@ -37,6 +37,9 @@ var wrongPosition;
 var solution = [];
 var colors = ["red","blue","orange","green","purple","pink"];
 
+//Declaring variable to hold current picture representing how correct the guess is
+var guessImage = new Image();
+
 //VARIABLES FOR TIMER<-------------------
 var startTime = 0, endTime = 0;
 var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
@@ -498,11 +501,11 @@ function randomGenerator(values) {
 
 function checkGuess() {
 
-    if (correctPosition(index)) {
+    if (correctP(index)) {
         correctPosition++;
     }
 
-    else if (wrongPosition(index)) {
+    else if (wrongP(index)) {
         wrongPosition++;
     }
 
@@ -510,17 +513,87 @@ function checkGuess() {
 
 }
 
-function correctPosition(index) {
-
+function correctP(index) {
+    return (currGuess[index]==solution[index]);
 }
 
-function wrongPosition(index) {
+function wrongP(index) {
+    var found = false;
 
+    for(var i = 0; i < solution.length; i++) {
+        if (currGuess[index]==solution[i]) {
+            found = true;
+        }
+    }
+
+    return found;
 }
 
 function pictureChoice() {
-    if (correctPosition==4) {
-        
+    if (correctPosition==0) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/zero_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/zero_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/zero_two.png";
+        }
+        else if (wrongPosition==3) {
+            guessImage.src="../images/zero_three.png";
+        }
+        else {
+            guessImage.src="../images/zero_four.png";
+        }
+
     }
+
+    else if (correctPosition==1) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/one_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/one_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/one_two.png";
+        }
+        else if (wrongPosition==3) {
+            guessImage.src="../images/one_three.png";
+        }
+     
+    }
+
+    else if (correctPosition==2) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/two_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/two_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/two_two.png";
+        }
+     
+    }    
+
+    else if (correctPosition==3) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/three_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/three_one.png";
+        }
+    }  
+
+    else if (correctPosition==4) {
+        guessImage.src="../images/win.png"
+    }
+
+}
+
+function drawResult(x, y) {
+    ctx.drawImage(guessImage,x,y);
 }
 
