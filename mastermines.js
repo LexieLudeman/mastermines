@@ -5,6 +5,7 @@ var ctx = canvas.getContext("2d");
 //Setting current mode to empty (as opposed to easy or hard)
 var mode = "empty";
 var newGame = "on";
+var winLose = "lose";
 
 //Setting the x/y value for the buttons clicked
 var currentY = canvas.height - 210;
@@ -155,53 +156,82 @@ function newGuess() {
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
 
-        //Prints image of right/wrong next to guess
-        drawResult(imageX, currentY);
+        //Check guess/assign picture
+        
 
-        //Background of menu
-        ctx.beginPath();
-        ctx.rect(0,canvas.height-100,canvas.width,100);
-        ctx.fillStyle = "#8A8B93";
-        ctx.fill();
-        ctx.stroke();
+        //Change to if not right variable
+        if(1 == 1) {
 
-        //Clickable buttons
-        red(redX,startY);
-        blue(blueX,startY);
-        green(greenX,startY);
-        orange(orangeX,startY);
-        purple(purpleX,startY);
-        pink(pinkX,startY);
+            //Prints image of right/wrong next to guess
+            drawResult(imageX, currentY);
 
-        //Changing y
-        currentY -= 120;
+            //Background of menu
+            ctx.beginPath();
+            ctx.rect(0,canvas.height-100,canvas.width,100);
+            ctx.fillStyle = "#8A8B93";
+            ctx.fill();
+            ctx.stroke();
 
-        //Changing buttons back to being clickable
-        redNotClicked = true;
-        blueNotClicked = true;
-        greenNotClicked = true;
-        orangeNotClicked = true;
-        purpleNotClicked = true;
-        pinkNotClicked = true;
+            //Clickable buttons
+            red(redX,startY);
+            blue(blueX,startY);
+            green(greenX,startY);
+            orange(orangeX,startY);
+            purple(purpleX,startY);
+            pink(pinkX,startY);
 
-        //Box to print current guess
-        ctx.beginPath();
-        ctx.rect(350,0,150,100);
-        ctx.fillStyle = "#8A8B93";
-        ctx.fill();
-        ctx.stroke();
+            //Changing y
+            currentY -= 120;
 
-        //Printing current number of guesses
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.fillText(userGuesses,425,40);
+            //Changing buttons back to being clickable
+            redNotClicked = true;
+            blueNotClicked = true;
+            greenNotClicked = true;
+            orangeNotClicked = true;
+            purpleNotClicked = true;
+            pinkNotClicked = true;
 
-        //Prints guesses used
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "black";
-        ctx.textAlign = "center";
-        ctx.fillText("Guesses Used",425,70);
+            //Box to print current guess
+            ctx.beginPath();
+            ctx.rect(350,0,150,100);
+            ctx.fillStyle = "#8A8B93";
+            ctx.fill();
+            ctx.stroke();
+
+            //Printing current number of guesses
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText(userGuesses,425,40);
+
+            //Prints guesses used
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+            ctx.fillText("Guesses Used",425,70);
+
+        }
+
+        else {
+
+            mode = "empty";
+            newGame = "off";
+            winLose = "win";
+
+            //ENDTIMER() FUNCTION CALLED HERE
+            endTimer();
+            winLose();
+            currentY = canvas.height - 210;
+
+            //Changing buttons back to being unclickable
+            redNotClicked = false;
+            blueNotClicked = false;
+            greenNotClicked = false;
+            orangeNotClicked = false;
+            purpleNotClicked = false;
+            pinkNotClicked = false;
+
+        }
 
     }
 
