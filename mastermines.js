@@ -4,6 +4,7 @@ var ctx = canvas.getContext("2d");
 
 //Setting current mode to empty (as opposed to easy or hard)
 var mode = "empty";
+var newGame = "on";
 
 //Setting the x/y value for the buttons clicked
 var currentY = canvas.height - 210;
@@ -23,6 +24,8 @@ var purpleX = 625;
 var purpleNotClicked = true;
 var pinkX = 775;
 var pinkNotClicked = true;
+
+var minutes = 12;
 
 //Declaring the max number of guesses, how many guesses the user used and an array for their current guess pick
 var maxGuesses;
@@ -81,6 +84,14 @@ function startMenu() {
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Hard",512,650);
+
+    //Unclicking buttons
+    redNotClicked = true;
+    blueNotClicked = true;
+    greenNotClicked = true;
+    orangeNotClicked = true;
+    purpleNotClicked = true;
+    pinkNotClicked = true;
 }
 
 function guessMenu() {
@@ -129,23 +140,50 @@ function newGuess() {
         //Changing y
         currentY -= 120;
 
+        //Changing buttons back to being clickable
+        redNotClicked = true;
+        blueNotClicked = true;
+        greenNotClicked = true;
+        orangeNotClicked = true;
+        purpleNotClicked = true;
+        pinkNotClicked = true;
+
+        //Box to print current guess
+        ctx.beginPath();
+        ctx.rect(350,0,150,100);
+        ctx.fillStyle = "#8A8B93";
+        ctx.fill();
+        ctx.stroke();
+
+        //Printing current number of guesses
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText(userGuesses,425,40);
+
+        //
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.textAlign = "center";
+        ctx.fillText("Guesses Used",425,70);
+
     }
 
     //If user has used all of their guesses, resets mode, alerts loser it has lost and resets the y value for the next guess
     else {
         mode = "empty";
-        alert("You lose..for now!");
-        startMenu();
+        newGame = "off";
+        winLose();
         currentY = canvas.height - 210;
-    }
 
-    //Changing buttons back to being unclicked (they are now all clickable again)
-    redNotClicked = true;
-    blueNotClicked = true;
-    greenNotClicked = true;
-    orangeNotClicked = true;
-    purpleNotClicked = true;
-    pinkNotClicked = true;
+        //Changing buttons back to being unclickable
+        redNotClicked = false;
+        blueNotClicked = false;
+        greenNotClicked = false;
+        orangeNotClicked = false;
+        purpleNotClicked = false;
+        pinkNotClicked = false;
+    }
 
     //Resetting x value for next guess
     currentX = 25;
@@ -342,6 +380,10 @@ function intersectsPink(x,y) {
 
 }
 
+function intersectsNewGame(x,y) {
+    return (x < 490) && (x > 415) && (y < 685) && (y > 635);
+}
+
 //Listening for mouse clicks
 canvas.addEventListener("mousedown", change, false);
 
@@ -351,7 +393,7 @@ function change(event) {
     var y = event.offsetY;
 
     //Allows the easy/hard buttons to work if mode has not been picked
-    if(mode == "empty") {
+    if(mode == "empty" && newGame == "on") {
 
         //If easy button is clicked, sets mode and max number of guesses and draws background and guess menu
         if( intersectsEasy(x,y) ) {
@@ -372,6 +414,11 @@ function change(event) {
             background();
             guessMenu();
         }
+    }
+
+    else if(mode == "empty" && newGame == "off" && intersectsNewGame(x,y)) {
+        newGame = "on";
+        startMenu();
     }
 
     //If a button is clicked for first time, adds color to array and draws the button in current guess area
@@ -439,3 +486,47 @@ function change(event) {
 
 }
 
+function winLose() {
+
+    //background
+    ctx.beginPath();
+    ctx.rect(300,500,300,200);
+    ctx.fillStyle = "#8A8B93";
+    ctx.fill();
+    ctx.stroke();
+
+    //text
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    if(winLose == "lose") {
+        ctx.fillText("You lose!",450,550);
+    }
+    else {
+        ctx.fillText("You win!",450,550);
+    }
+
+    //Printing out time
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("You finished in " + minutes,100,100);
+
+    //Printing out number of guesses
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("with " + userGuesses + " guesses",200,200);
+
+    //New game button
+    ctx.beginPath();
+    ctx.rect(415,635,75,50);
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();
+    ctx.font = "15px Arial";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("New Game",450,665);
+
+}
