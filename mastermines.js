@@ -32,6 +32,38 @@ var maxGuesses;
 var userGuesses;
 var currGuess = [];
 
+//Declaring variables to hold the number of correct colors in both right and wrong positions
+var correctPosition;
+var wrongPosition;
+
+//Declaring variables for the solution and the reference array for colors
+var solution = [];
+var colors = ["red","blue","orange","green","purple","pink"];
+
+//Declaring variable to hold current picture representing how correct the guess is
+var guessImage = new Image();
+
+//VARIABLES FOR TIMER<-------------------
+var startTime = 0, endTime = 0;
+var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
+
+//TIMING FUNCTIONS<----------------------
+function startTimer() {
+    startTime = new Date();
+};
+
+function endTimer() {
+    endTime = new Date();
+    var timeDiff = endTime - startTime; //in ms
+    // strip the ms
+    timeDiff /= 1000;
+    
+    // get seconds and minutes
+    totalSecondsElapsed = Math.round(timeDiff);
+    minutesElapsed = Math.round(totalSecondsElapsed/60);
+    secondsRemainder = (totalSecondsElapsed % 60);
+}
+
 //Making the start menu for the first round
 startMenu();
 
@@ -58,7 +90,7 @@ function startMenu() {
     ctx.fillStyle = "#8A8B93";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "bold 20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Please Pick A Difficulty",450,550);
@@ -69,7 +101,7 @@ function startMenu() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Easy",387,650);
@@ -80,7 +112,7 @@ function startMenu() {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "20px Arial";
+    ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("Hard",512,650);
@@ -173,6 +205,8 @@ function newGuess() {
     else {
         mode = "empty";
         newGame = "off";
+        //ENDTIMER() FUNCTION CALLED HERE
+        endTimer();
         winLose();
         currentY = canvas.height - 210;
 
@@ -403,9 +437,11 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            startTimer();         //STARTTIMER() FUNCTION CALLED HERE
+            makeSolution();
         }
 
-        //If easy button is clicked, sets mode and max number of guesses and draws background and guess menu
+        //If hard button is clicked, sets mode and max number of guesses and draws background and guess menu
         else if( intersectsHard(x,y) ) {
             mode = "hard";
             maxGuesses = 8;
@@ -413,6 +449,8 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            startTimer();        //STARTTIMER() CALLED HERE
+            makeSolution();
         }
     }
 
@@ -530,3 +568,128 @@ function winLose() {
     ctx.fillText("New Game",450,665);
 
 }
+
+function makeSolution() {
+    if (mode=="easy") {
+        randomGenerator(4);
+    }
+    else {
+        randomGenerator(4);
+    }
+    alert(solution);
+}
+
+function randomGenerator(values) {
+    var remainingNumbers = values;
+    var tempColors = colors;
+    var num;
+    
+    while(remainingNumbers > 0) {
+        num = (Math.floor(Math.random() * tempColors.length));
+        solution.push(tempColors[num]);
+        tempColors.splice(num,1);
+        remainingNumbers--;
+    }
+}
+
+function checkGuess() {
+
+    for (var index=0; index<solution.length; index++) {
+        if (correctP(index)) {
+            correctPosition++;
+        }
+
+        else if (wrongP(index)) {
+            wrongPosition++;
+        }
+    }
+
+    pictureChoice();
+    alert("There are: " + correctPosition + "checks and " + wrongPosition + " wrong position");
+
+}
+
+function correctP(index) {
+    return (currGuess[index]==solution[index]);
+}
+
+function wrongP(index) {
+    var found = false;
+
+    for(var i = 0; i < solution.length; i++) {
+        if (currGuess[index]==solution[i]) {
+            found = true;
+        }
+    }
+
+    return found;
+}
+
+function pictureChoice() {
+    if (correctPosition==0) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/zero/zero_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/zero/zero_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/zero/zero_two.png";
+        }
+        else if (wrongPosition==3) {
+            guessImage.src="../images/zero/zero_three.png";
+        }
+        else {
+            guessImage.src="../images/zero/zero_four.png";
+        }
+
+    }
+
+    else if (correctPosition==1) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/one/one_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/one/one_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/one/one_two.png";
+        }
+        else if (wrongPosition==3) {
+            guessImage.src="../images/one/one_three.png";
+        }
+     
+    }
+
+    else if (correctPosition==2) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/two/two_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/two/two_one.png";
+        }
+        else if (wrongPosition==2) {
+            guessImage.src="../images/two/two_two.png";
+        }
+     
+    }    
+
+    else if (correctPosition==3) {
+        if (wrongPosition==0) {
+            guessImage.src="../images/three/three_zero.png";
+        }
+        else if (wrongPosition==1) {
+            guessImage.src="../images/three/three_one.png";
+        }
+    }  
+
+    else if (correctPosition==4) {
+        guessImage.src="../images/four/four.png"
+    }
+
+}
+
+function drawResult(x, y) {
+    ctx.drawImage(guessImage,x,y);
+}
+
