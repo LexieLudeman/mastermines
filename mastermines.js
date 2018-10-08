@@ -510,6 +510,7 @@ function checkGuess() {
     }
 
     pictureChoice();
+    alert("There are: " + correctPosition + "checks and " + wrongPosition + " wrong position");
 
 }
 
