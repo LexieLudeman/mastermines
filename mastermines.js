@@ -203,13 +203,13 @@ function newGuess() {
             ctx.stroke();
 
             //Printing current number of guesses
-            ctx.font = "20px Arial";
+            ctx.font = "20px monospace";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText(userGuesses,425,40);
 
             //Prints guesses used
-            ctx.font = "20px Arial";
+            ctx.font = "20px monospace";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText("Guesses Used",425,70);
@@ -453,7 +453,7 @@ function intersectsPink(x,y) {
 }
 
 function intersectsNewGame(x,y) {
-    return (x < 490) && (x > 415) && (y < 685) && (y > 635);
+    return (x < 500) && (x > 400) && (y < 685) && (y > 635);
 }
 
 //Listening for mouse clicks
@@ -573,7 +573,7 @@ function winLose() {
     ctx.stroke();
 
     //text
-    ctx.font = "20px Arial";
+    ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     if(end == "lose") {
@@ -584,24 +584,25 @@ function winLose() {
     }
 
     //Printing out time
-    ctx.font = "15px Arial";
+    ctx.font = "15px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText("You finished in " + minutes,100,100);
+    ctx.fillText("You finished in " + minutesElapsed + " minutes",450,575);
+    ctx.fillText("and " + secondsRemainder + " seonds",450,600);
 
     //Printing out number of guesses
-    ctx.font = "15px Arial";
+    ctx.font = "15px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText("with " + userGuesses + " guesses",200,200);
+    ctx.fillText("with " + userGuesses + " guesses",450,625);
 
     //New game button
     ctx.beginPath();
-    ctx.rect(415,635,75,50);
+    ctx.rect(400,635,100,50);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
-    ctx.font = "15px Arial";
+    ctx.font = "15px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("New Game",450,665);
