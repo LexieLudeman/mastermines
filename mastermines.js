@@ -683,7 +683,7 @@ function winLose() {
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("You finished in " + minutesElapsed + " minutes",450,575);
-    ctx.fillText("and " + secondsRemainder + " seonds",450,600);
+    ctx.fillText("and " + secondsRemainder + " seconds",450,600);
 
     //Printing out number of guesses
     ctx.font = "15px monospace";
