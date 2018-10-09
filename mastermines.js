@@ -796,6 +796,7 @@ function wrongP(index) {
 
 //Function to set correct picture
 function pictureChoice() {
+    solved = false;
     if (correctPosition==0) {
         if (wrongPosition==0) {
             guessImage = document.getElementById("zero_zero");
