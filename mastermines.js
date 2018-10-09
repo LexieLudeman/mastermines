@@ -161,12 +161,6 @@ function newGuess() {
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
 
-        //Drawing new red lines around current guess
-        clearLine(lineY + 100);
-        //blackLine(lineY + 100);
-        lineY -= 100;
-        redLine(lineY);
-
         //Check guess/assign picture
         checkGuess();
 
@@ -176,7 +170,11 @@ function newGuess() {
         //Change to if not right variable
         if(!solved) {
 
-
+            //Drawing new red lines around current guess
+            clearLine(lineY + 100);
+            //blackLine(lineY + 100);
+            lineY -= 100;
+            redLine(lineY);
 
             //Background of menu
             ctx.beginPath();
@@ -215,7 +213,7 @@ function newGuess() {
             ctx.font = "20px monospace";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
-            ctx.fillText(userGuesses,425,40);
+            ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);
 
             //Prints guesses used
             ctx.font = "20px monospace";
@@ -650,7 +648,7 @@ function winLose() {
 
     //Setting up x and y to print solution
     currentX = 25;
-    currentY = 210;
+    currentY = 120;
 
     //Writing "Solution" text
     ctx.font = "20px monospace";
@@ -679,6 +677,44 @@ function winLose() {
             pink(currentX, currentY);
         }
         else if (solution[i] == "purple") {
+            purple(currentX, currentY);
+        }
+
+        currentX += 150;
+
+    }
+
+    //Printing last guess
+    currentX = 25;
+    currentY = 260;
+
+    //Writing "Last Guess" text
+    ctx.font = "20px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("Last Guess",currentX+50,currentY-25); 
+
+    //Print out solution here with currentX and currentY
+    //Use color() functions (ie red(currentX, currentY), pink(currentX, currentY), etc)
+    //Increment x by 150 after each print but keep y the same
+
+    for (var i = 0; i < currGuess.length; i++) {
+        if (currGuess[i] == "red") {
+            red(currentX, currentY);
+        }
+        else if (currGuess[i] == "orange") {
+            orange(currentX, currentY);
+        }
+        else if (currGuess[i] == "green") {
+            green(currentX, currentY);
+        }
+        else if (currGuess[i] == "blue") {
+            blue(currentX, currentY);
+        }
+        else if (currGuess[i] == "pink") {
+            pink(currentX, currentY);
+        }
+        else if (currGuess[i] == "purple") {
             purple(currentX, currentY);
         }
 
