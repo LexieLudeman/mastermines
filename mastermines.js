@@ -26,6 +26,7 @@ var purpleNotClicked = true;
 var pinkX = 775;
 var pinkNotClicked = true;
 var imageX = 700;
+var lineY = canvas.height - 120;
 
 var minutes = 12;
 
@@ -45,7 +46,6 @@ var tempColors = [];
 
 //Declaring variable to hold current picture representing how correct the guess is
 var guessImage = new Image();
-guessImage.src = "thumbnail.png";
 
 //Declaring variable to check whether the guess=solution
 var solved = false;
@@ -161,6 +161,12 @@ function newGuess() {
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
 
+        //Drawing new red lines around current guess
+        clearLine(lineY + 100);
+        //blackLine(lineY + 100);
+        lineY -= 100;
+        redLine(lineY);
+
         //Check guess/assign picture
         checkGuess();
 
@@ -168,7 +174,7 @@ function newGuess() {
         if(!solved) {
 
             //Prints image of right/wrong next to guess
-            ctx.drawImage(guessImage,x,y);
+            //ctx.drawImage(guessImage,x,y);
 
             //Background of menu
             ctx.beginPath();
@@ -186,7 +192,7 @@ function newGuess() {
             pink(pinkX,startY);
 
             //Changing y
-            currentY -= 120;
+            currentY -= 100;
 
             //Changing buttons back to being clickable
             redNotClicked = true;
@@ -397,6 +403,69 @@ function offPink(x,y) {
 
 }
 
+//Function to draw red line (doubled so its not transparent)
+function redLine(y) {
+
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(canvas.width,y);
+    ctx.strokeStyle = "#FF0000";
+    ctx.stroke();
+    ctx.strokeStyle = "#000000";
+
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(canvas.width,y);
+    ctx.strokeStyle = "#FF0000";
+    ctx.stroke();
+    ctx.strokeStyle = "#000000";
+
+}
+
+//Function to draw black line (doubled so its not transparent)
+function blackLine(y) {
+
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(canvas.width,y);
+    ctx.strokeStyle = "#000000";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(0,y);
+    ctx.lineTo(canvas.width,y);
+    ctx.strokeStyle = "#000000";
+    ctx.stroke();
+
+}
+
+//Function to clear red line
+function clearLine(y) {
+
+    for(i = 0; i < 3; ++i) {
+
+        ctx.beginPath();
+        ctx.moveTo(0,y);
+        ctx.lineTo(canvas.width,y-1);
+        ctx.strokeStyle = "#C0C2D3";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,y);
+        ctx.lineTo(canvas.width,y);
+        ctx.strokeStyle = "#C0C2D3";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0,y);
+        ctx.lineTo(canvas.width,y+1);
+        ctx.strokeStyle = "#C0C2D3";
+        ctx.stroke();
+
+    }
+
+}
+
 //Function to find if a click has intersected with the easy button
 function intersectsEasy(x,y) {
 
@@ -453,6 +522,7 @@ function intersectsPink(x,y) {
 
 }
 
+//Function to find if a click has intersected the new game button
 function intersectsNewGame(x,y) {
     return (x < 500) && (x > 400) && (y < 685) && (y > 635);
 }
@@ -477,6 +547,9 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            redLine(lineY);
+            lineY -= 100;
+            redLine(lineY);
             startTimer();         //STARTTIMER() FUNCTION CALLED HERE
             makeSolution();
         }
@@ -489,11 +562,15 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            redLine(lineY);
+            lineY -= 100;
+            redLine(lineY);
             startTimer();        //STARTTIMER() CALLED HERE
             makeSolution();
         }
     }
 
+    //If new game button is clicked, starts new game (with new start menu)
     else if(mode == "empty" && newGame == "off" && intersectsNewGame(x,y)) {
         newGame = "on";
         startMenu();
@@ -564,7 +641,22 @@ function change(event) {
 
 }
 
-function winLose() {
+//Function to annouce win/loss
+function winLose() {   
+
+    //Setting up x and y to print solution
+    currentX = 25;
+    currentY = 210;
+
+    //Writing "Solution" text
+    ctx.font = "20px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("Solution",currentX+50,currentY-25); 
+
+    //Print out solution here with currentX and currentY
+    //Use color() functions (ie red(currentX, currentY), pink(currentX, currentY), etc)
+    //Increment x by 150 after each print but keep y the same
 
     //background
     ctx.beginPath();
@@ -610,6 +702,7 @@ function winLose() {
 
 }
 
+//Function to make randomized solution
 function makeSolution() {
     solution = [];
     if (mode=="easy") {
@@ -621,6 +714,7 @@ function makeSolution() {
     alert(solution);
 }
 
+//Random color generator function
 function randomGenerator(values) {
     
     var colors = ["red","blue","orange","green","purple","pink"];
@@ -637,6 +731,7 @@ function randomGenerator(values) {
     }
 }
 
+//Function to check what is right/wrong with guess
 function checkGuess() {
     correctPosition = 0;
     wrongPosition = 0;
@@ -656,10 +751,12 @@ function checkGuess() {
 
 }
 
+//???
 function correctP(index) {
     return (currGuess[index]==solution[index]);
 }
 
+//???
 function wrongP(index) {
     var found = false;
 
@@ -672,6 +769,7 @@ function wrongP(index) {
     return found;
 }
 
+//Function to set correct picture
 function pictureChoice() {
     if (correctPosition==0) {
         if (wrongPosition==0) {
