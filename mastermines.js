@@ -727,6 +727,7 @@ function winLose() {
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
     ctx.fillText("New Game",450,665);
+    end = "lose";
 
 }
 
