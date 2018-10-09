@@ -713,7 +713,6 @@ function makeSolution() {
     else {
         randomGenerator(4);
     }
-    alert(solution);
 }
 
 //Random color generator function
@@ -749,8 +748,6 @@ function checkGuess() {
     }
 
     pictureChoice();
-    alert("There are: " + correctPosition + " correct and " + wrongPosition + " wrong position");
-
 }
 
 //Function to check if the index is the right color in the right position
