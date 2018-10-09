@@ -547,6 +547,7 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            lineY = canvas.height - 120;
             redLine(lineY);
             lineY -= 100;
             redLine(lineY);
@@ -562,6 +563,7 @@ function change(event) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             background();
             guessMenu();
+            lineY = canvas.height - 120;
             redLine(lineY);
             lineY -= 100;
             redLine(lineY);
