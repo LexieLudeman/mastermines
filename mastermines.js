@@ -158,6 +158,12 @@ function newGuess() {
     //Incrementing userGuesses
     userGuesses++;
 
+    //Printing current number of guesses
+    ctx.font = "20px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);    
+
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
 
@@ -165,7 +171,9 @@ function newGuess() {
         checkGuess();
 
         //Prints image of right/wrong next to guess
-        ctx.drawImage(guessImage,imageX,currentY);        
+        ctx.drawImage(guessImage,imageX,currentY);   
+        
+
 
         //Change to if not right variable
         if(!solved) {
@@ -208,12 +216,14 @@ function newGuess() {
             ctx.fillStyle = "#8A8B93";
             ctx.fill();
             ctx.stroke();
+            /*
 
             //Printing current number of guesses
             ctx.font = "20px monospace";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
             ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);
+            */
 
             //Prints guesses used
             ctx.font = "20px monospace";
