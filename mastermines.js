@@ -174,7 +174,7 @@ function newGuess() {
         if(!solved) {
 
             //Prints image of right/wrong next to guess
-            //ctx.drawImage(guessImage,x,y);
+            ctx.drawImage(guessImage,imageX,currentY);
 
             //Background of menu
             ctx.beginPath();
@@ -753,12 +753,12 @@ function checkGuess() {
 
 }
 
-//???
+//Function to check if the index is the right color in the right position
 function correctP(index) {
     return (currGuess[index]==solution[index]);
 }
 
-//???
+//Function to check if the index is the right color but at the wrong location
 function wrongP(index) {
     var found = false;
 
@@ -775,63 +775,63 @@ function wrongP(index) {
 function pictureChoice() {
     if (correctPosition==0) {
         if (wrongPosition==0) {
-            guessImage.src="images/zero/zero_zero.png";
+            guessImage = document.getElementById("zero_zero");
         }
         else if (wrongPosition==1) {
-            guessImage.src="images/zero/zero_one.png";
+            guessImage = document.getElementById("zero_one");
         }
         else if (wrongPosition==2) {
-            guessImage.src="images/zero/zero_two.png";
+            guessImage = document.getElementById("zero_two");
         }
         else if (wrongPosition==3) {
-            guessImage.src="images/zero/zero_three.png";
+            guessImage = document.getElementById("zero_three");
         }
         else {
-            guessImage.src="images/zero/zero_four.png";
+            guessImage = document.getElementById("zero_four");
         }
 
     }
 
     else if (correctPosition==1) {
         if (wrongPosition==0) {
-            guessImage.src="images/one/one_zero.png";
+            guessImage = document.getElementById("one_zero");
         }
         else if (wrongPosition==1) {
-            guessImage.src="images/one/one_one.png";
+            guessImage = document.getElementById("one_one");
         }
         else if (wrongPosition==2) {
-            guessImage.src="images/one/one_two.png";
+            guessImage = document.getElementById("one_two");
         }
         else if (wrongPosition==3) {
-            guessImage.src="images/one/one_three.png";
+            guessImage = document.getElementById("one_three");
         }
      
     }
 
     else if (correctPosition==2) {
         if (wrongPosition==0) {
-            guessImage.src="images/two/two_zero.png";
+            guessImage = document.getElementById("two_zero");
         }
         else if (wrongPosition==1) {
-            guessImage.src="images/two/two_one.png";
+            guessImage = document.getElementById("two_one");
         }
         else if (wrongPosition==2) {
-            guessImage.src="images/two/two_two.png";
+            guessImage = document.getElementById("two_two");
         }
      
     }    
 
     else if (correctPosition==3) {
         if (wrongPosition==0) {
-            guessImage.src="images/three/three_zero.png";
+            guessImage = document.getElementById("three_zero");
         }
         else if (wrongPosition==1) {
-            guessImage.src="images/three/three_one.png";
+            guessImage = document.getElementById("three_one");
         }
     }  
 
     else if (correctPosition==4) {
-        guessImage.src="images/four/four.png";
+        guessImage = document.getElementById("four_zero");
         solved=true;
     }
 
