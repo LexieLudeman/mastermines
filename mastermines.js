@@ -170,11 +170,13 @@ function newGuess() {
         //Check guess/assign picture
         checkGuess();
 
+        //Prints image of right/wrong next to guess
+        ctx.drawImage(guessImage,imageX,currentY);        
+
         //Change to if not right variable
         if(!solved) {
 
-            //Prints image of right/wrong next to guess
-            ctx.drawImage(guessImage,imageX,currentY);
+
 
             //Background of menu
             ctx.beginPath();
@@ -659,6 +661,30 @@ function winLose() {
     //Print out solution here with currentX and currentY
     //Use color() functions (ie red(currentX, currentY), pink(currentX, currentY), etc)
     //Increment x by 150 after each print but keep y the same
+
+    for (var i = 0; i < solution.length; i++) {
+        if (solution[i] == "red") {
+            red(currentX, currentY);
+        }
+        else if (solution[i] == "orange") {
+            orange(currentX, currentY);
+        }
+        else if (solution[i] == "green") {
+            green(currentX, currentY);
+        }
+        else if (solution[i] == "blue") {
+            blue(currentX, currentY);
+        }
+        else if (solution[i] == "pink") {
+            pink(currentX, currentY);
+        }
+        else if (solution[i] == "purple") {
+            purple(currentX, currentY);
+        }
+
+        currentX += 150;
+
+    }
 
     //background
     ctx.beginPath();
