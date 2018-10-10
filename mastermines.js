@@ -51,7 +51,7 @@ var guessImage = new Image();
 var solved = false;
 
 //Declaring variables for timer and scoring
-var startTime = 0, endTime = 0;
+var startTime = 0, endTime = 0, score = 0;
 var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
 
 //Defining timing and scoring functions
@@ -78,6 +78,9 @@ function calcScore(unusedGuess, timeElapsed, totalGuess){
     return Math.round((unusedGuess * (1/timeElapsed) * modeMultiplier * 10000));
 }
 
+function getScore(){
+    return score;
+}
 //Making the start menu for the first round
 startMenu();
 
@@ -751,7 +754,8 @@ function winLose() {
     else {
         ctx.fillText("You win!",450,550);
         //printing score
-        ctx.fillText("Your score is " + calcScore((maxGuesses - userGuesses),totalSecondsElapsed, maxGuesses) + "!",450,720); //FINDME
+        score = calcScore((maxGuesses - userGuesses),totalSecondsElapsed, maxGuesses);
+        ctx.fillText("Your score is " + score + "!",450,720); //FINDME
         
     }
 
@@ -791,7 +795,7 @@ function makeSolution() {
     else {
         randomGenerator(4);
     }
-    //alert(solution);  FOR TESTING
+    alert(solution);  //FOR TESTING
 }
 
 //Random color generator function
