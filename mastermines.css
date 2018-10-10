@@ -25,3 +25,13 @@ canvas {
 img {
     display:none;
 }
+
+#gameInfo{
+    position: absolute;
+    left: 20px;
+    top: 250px;
+    height: 1500px;
+    width: 150px;
+    color: white;
+    overflow: scroll;
+}
