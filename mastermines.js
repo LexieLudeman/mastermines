@@ -156,13 +156,28 @@ function guessMenu() {
 function newGuess() {
 
     //Incrementing userGuesses
-    userGuesses++;
+    userGuesses++;   
 
+    //Box to print current guess number
+    ctx.beginPath();
+    ctx.rect(350,0,150,100);
+    ctx.fillStyle = "#8A8B93";
+    ctx.fill();
+    ctx.stroke();
+    
+    
     //Printing current number of guesses
     ctx.font = "20px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);    
+    ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);
+    
+
+    //Prints guesses used
+    ctx.font = "20px monospace";
+    ctx.fillStyle = "black";
+    ctx.textAlign = "center";
+    ctx.fillText("Guesses Used",425,70);
 
     //If user has not used all of their guesses, redraws menu and buttons and changes the y position of the next guess
     if(userGuesses < maxGuesses) {
@@ -171,8 +186,7 @@ function newGuess() {
         checkGuess();
 
         //Prints image of right/wrong next to guess
-        ctx.drawImage(guessImage,imageX,currentY);   
-        
+        ctx.drawImage(guessImage,imageX,currentY);           
 
 
         //Change to if not right variable
@@ -210,26 +224,7 @@ function newGuess() {
             purpleNotClicked = true;
             pinkNotClicked = true;
 
-            //Box to print current guess
-            ctx.beginPath();
-            ctx.rect(350,0,150,100);
-            ctx.fillStyle = "#8A8B93";
-            ctx.fill();
-            ctx.stroke();
-            /*
 
-            //Printing current number of guesses
-            ctx.font = "20px monospace";
-            ctx.fillStyle = "black";
-            ctx.textAlign = "center";
-            ctx.fillText(userGuesses + " out of " + maxGuesses,425,40);
-            */
-
-            //Prints guesses used
-            ctx.font = "20px monospace";
-            ctx.fillStyle = "black";
-            ctx.textAlign = "center";
-            ctx.fillText("Guesses Used",425,70);
 
         }
 
