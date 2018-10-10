@@ -50,11 +50,11 @@ var guessImage = new Image();
 //Declaring variable to check whether the guess=solution
 var solved = false;
 
-//VARIABLES FOR TIMER<-------------------
+//Declaring variables for timer and scoring
 var startTime = 0, endTime = 0;
 var totalSecondsElapsed = 0, minutesElapsed = 0, secondsRemainder = 0;
 
-//TIMING FUNCTIONS<----------------------
+//Defining timing and scoring functions
 function startTimer() {
     startTime = new Date();
 };
@@ -69,6 +69,13 @@ function endTimer() {
     totalSecondsElapsed = Math.round(timeDiff);
     minutesElapsed = Math.round(totalSecondsElapsed/60);
     secondsRemainder = (totalSecondsElapsed % 60);
+}
+
+function calcScore(unusedGuess, timeElapsed, totalGuess){
+    var modeMultiplier = 1;
+    if(totalGuess == 8){ modeMultiplier = 5;}
+    //alert("score fn called, mode: " + totalGuess + " GR: " + unusedGuess + " tE: " + timeElapsed);
+    return Math.round((unusedGuess * (1/timeElapsed) * modeMultiplier * 10000));
 }
 
 //Making the start menu for the first round
@@ -729,7 +736,7 @@ function winLose() {
 
     //background
     ctx.beginPath();
-    ctx.rect(300,500,300,200);
+    ctx.rect(300,500,300,250);
     ctx.fillStyle = "#8A8B93";
     ctx.fill();
     ctx.stroke();
@@ -743,6 +750,9 @@ function winLose() {
     }
     else {
         ctx.fillText("You win!",450,550);
+        //printing score
+        ctx.fillText("Your score is " + calcScore((maxGuesses - userGuesses),totalSecondsElapsed, maxGuesses) + "!",450,720); //FINDME
+        
     }
 
     //Printing out time
@@ -760,14 +770,14 @@ function winLose() {
 
     //New game button
     ctx.beginPath();
-    ctx.rect(400,635,100,50);
+    ctx.rect(400,638,100,50);
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
     ctx.font = "15px monospace";
     ctx.fillStyle = "black";
     ctx.textAlign = "center";
-    ctx.fillText("New Game",450,665);
+    ctx.fillText("New Game",450,668);
     end = "lose";
 
 }
@@ -781,6 +791,7 @@ function makeSolution() {
     else {
         randomGenerator(4);
     }
+    //alert(solution);  FOR TESTING
 }
 
 //Random color generator function
