@@ -758,8 +758,8 @@ function winLose() {
         ctx.fillText("You win!",450,550);
         //printing score
         score = calcScore((maxGuesses - userGuesses),totalSecondsElapsed, maxGuesses);
-        highscore(score);
         ctx.fillText("Your score is " + score + "!",450,720); //FINDME
+        highscore(score);
         
     }
 
