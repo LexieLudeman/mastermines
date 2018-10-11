@@ -31,7 +31,7 @@ img {
     height: 1500px;
     width: 150px;
     color: white;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 #gameInfo:hover{
