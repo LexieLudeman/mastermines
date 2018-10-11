@@ -799,7 +799,6 @@ function makeSolution() {
     else {
         randomGenerator(4);
     }
-    alert(solution);  //FOR TESTING
 }
 
 //Random color generator function
