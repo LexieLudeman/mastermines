@@ -79,6 +79,7 @@ function calcScore(unusedGuess, timeElapsed, totalGuess){
 }
 
 function getScore(){
+    alert("score is " + score)
     return score;
 }
 //Making the start menu for the first round
@@ -568,6 +569,7 @@ function change(event) {
             redLine(lineY);
             startTimer();         //STARTTIMER() FUNCTION CALLED HERE
             makeSolution();
+            update_scores();
         }
 
         //If hard button is clicked, sets mode and max number of guesses and draws background and guess menu
@@ -584,6 +586,7 @@ function change(event) {
             redLine(lineY);
             startTimer();        //STARTTIMER() CALLED HERE
             makeSolution();
+            update_scores();
         }
     }
 
@@ -755,6 +758,7 @@ function winLose() {
         ctx.fillText("You win!",450,550);
         //printing score
         score = calcScore((maxGuesses - userGuesses),totalSecondsElapsed, maxGuesses);
+        highscore(score);
         ctx.fillText("Your score is " + score + "!",450,720); //FINDME
         
     }
