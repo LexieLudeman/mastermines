@@ -35,3 +35,8 @@ img {
     color: white;
     overflow: scroll;
 }
+
+#gameInfo:hover{
+    color: lightcoral;
+    transition: color 2s;
+}
