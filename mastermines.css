@@ -8,9 +8,7 @@ body { width: 100%;
     background-repeat:repeat-x;
     text-align: center;
     position:relative;
-    
     font-family: monospace;
-    
 }
 
 canvas {
@@ -40,3 +38,28 @@ img {
     color: lightcoral;
     transition: color 2s;
 }
+
+h1 {
+    color: lightcoral;
+    animation-name: title;
+    animation-duration: 10s;
+}
+
+@keyframes title {
+    from {color: lightcoral;}
+    to {color: white;}
+}
+
+#credits:hover{
+  font-size: 30px;
+  color: darkred;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
